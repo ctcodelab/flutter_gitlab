@@ -14,7 +14,7 @@ class MergeRequestsApi {
     return new MergeRequest.fromJson(json);
   }
 
-  Future<List<Map>> list({
+  Future<List<Map<String, dynamic>>> list({
     MergeRequestState? state,
     MergeRequestOrderBy? orderBy,
     MergeRequestSort? sort,
