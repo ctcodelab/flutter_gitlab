@@ -115,18 +115,23 @@ class GitLab {
 
   /// This function is used internally to build the URIs for API calls.
   @visibleForTesting
-  Uri buildUri(Iterable<String> pathSegments,
-      {Map<String, dynamic>? queryParameters, int? page, int? perPage}) {
+  Uri buildUri(
+    Iterable<String> pathSegments, {
+    Map<String, dynamic>? queryParameters,
+    int? page,
+    int? perPage,
+  }) {
     dynamic _addQueryParameter(String key, dynamic value) =>
         (queryParameters ??= new Map<String, dynamic>())[key] = '$value';
 
     if (page != null) _addQueryParameter('page', page);
     if (perPage != null) _addQueryParameter('per_page', perPage);
-    return new Uri(
-        scheme: scheme,
-        host: host,
-        pathSegments: ['api', apiVersion]..addAll(pathSegments),
-        queryParameters: queryParameters);
+    return Uri(
+      scheme: scheme,
+      host: host,
+      pathSegments: ['api', apiVersion]..addAll(pathSegments),
+      queryParameters: queryParameters,
+    );
   }
 }
 
