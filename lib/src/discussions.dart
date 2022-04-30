@@ -13,22 +13,22 @@ class IssueDiscussionsApi {
   /// Retrieves the list of discussions of an issue.
   ///
   /// See https://docs.gitlab.com/ee/api/discussions.html#list-project-issue-discussion-items
-  Future<List<Discussion?>> list({
+  Future<List<Map<String, dynamic>>> list({
     int? page,
     int? perPage,
   }) async {
     final queryParameters = <String, dynamic>{};
 
     final uri = _project.buildUri(
-      ['issues', _iid, 'discussions'],
+      ['merge_requests', _iid, 'discussions'],
       queryParameters: queryParameters,
       page: page,
       perPage: perPage,
     );
 
-    final jsonList = _responseToList(await _gitLab.request(uri));
+    return _responseToList(await _gitLab.request(uri));
 
-    return Discussion.fromJsonList(jsonList);
+    // return Discussion.fromJsonList(jsonList);
   }
 
   /// Retrieves a single discussion.
