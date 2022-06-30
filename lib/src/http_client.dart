@@ -1,7 +1,6 @@
-import 'dart:async';
-
+import 'package:dio/dio.dart';
 import 'package:gitlab/gitlab.dart';
-import 'package:http/http.dart' as http;
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 /// An abstraction for `http` that allows us to mock it.
 ///
@@ -10,24 +9,54 @@ import 'package:http/http.dart' as http;
 /// An instance of this class is created in the `GitLab` class, and will be used
 /// only by it.
 class GitLabHttpClient {
-  Future<http.Response> request(
-    Uri uri,
-    Map<String, String> headers,
-    HttpMethod method,
-  ) async {
-    http.Response response;
-    if (method == HttpMethod.get) {
-      response = await http.get(uri, headers: headers);
-    } else if (method == HttpMethod.put) {
-      response = await http.put(uri, headers: headers);
-    } else if (method == HttpMethod.post) {
-      response = await http.post(uri, headers: headers);
-    } else if (method == HttpMethod.delete) {
-      response = await http.delete(uri, headers: headers);
-    } else {
-      throw new ArgumentError('Invalid http method: $method');
+  GitLabHttpClient({bool dioLogger = false}) {
+    if (dioLogger) {
+      dio.interceptors.add(PrettyDioLogger());
     }
+  }
 
-    return response;
+  final dio = Dio();
+
+  Future<Response> request(
+    String uri, {
+    required Map<String, dynamic> header,
+    required HttpMethod method,
+    Map<String, dynamic>? queryParameters,
+  }) {
+    if (method == HttpMethod.get) {
+      return dio.get(
+        uri,
+        queryParameters: queryParameters,
+        options: Options(
+          headers: header,
+        ),
+      );
+    } else if (method == HttpMethod.put) {
+      return dio.put(
+        uri,
+        data: queryParameters,
+        options: Options(
+          headers: header,
+        ),
+      );
+    } else if (method == HttpMethod.post) {
+      return dio.post(
+        uri,
+        data: queryParameters,
+        options: Options(
+          headers: header,
+        ),
+      );
+    } else if (method == HttpMethod.delete) {
+      return dio.delete(
+        uri,
+        data: queryParameters,
+        options: Options(
+          headers: header,
+        ),
+      );
+    } else {
+      throw ArgumentError('Invalid http method: $method');
+    }
   }
 }
