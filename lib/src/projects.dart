@@ -30,4 +30,14 @@ class ProjectsApi {
       queryParameters: queryParameters,
     );
   }
+
+  Future<Response> projectMembers({
+    required int projectId,
+    Map<String, dynamic>? queryParameters,
+  }) {
+    return _gitLab.request(
+      '$endpoint/$projectId/users',
+      queryParameters: queryParameters,
+    );
+  }
 }
