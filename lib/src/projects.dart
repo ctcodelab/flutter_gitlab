@@ -12,8 +12,13 @@ class ProjectsApi {
 
   static const endpoint = '/projects';
 
-  Future<Response> membershipProjects() async {
-    return _gitLab.request(endpoint, queryParameters: {'membership': true});
+  Future<Response> membershipProjects({
+    Map<String, dynamic>? queryParameters,
+  }) async {
+    return _gitLab.request(
+      endpoint,
+      queryParameters: {'membership': true}..addAll(queryParameters ?? {}),
+    );
   }
 
   Future<Response> projectMergeRequests({
