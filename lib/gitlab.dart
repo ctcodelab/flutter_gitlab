@@ -24,6 +24,7 @@ import 'package:meta/meta.dart';
 
 part 'src/merge_requests.dart';
 part 'src/projects.dart';
+part 'src/user.dart';
 
 enum HttpMethod { get, post, put, delete }
 
@@ -81,6 +82,8 @@ class GitLab {
   /// This call doesn't do anything by itself, other than return the configured object.
   /// You can safely store the returned object and reuse it.
   ProjectsApi get project => ProjectsApi(this);
+
+  UserApi get user => UserApi(this);
 }
 
 class GitLabException implements Exception {
