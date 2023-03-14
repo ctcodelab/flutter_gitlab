@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_gitlab/flutter_gitlab.dart';
 
-const gitLabToken = 'glpat-KUsnhRnQJELNpUdzXiM5';
-const projectId = 4174;
+/// Please refer https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token for details
+const gitLabToken = 'ENTER YOUR GITLAB ACCESS TOKEN HERE';
+const projectId = 0; // ENTER YOUR PROJECT ID
 
 void main() async {
   final project = GitLab(
