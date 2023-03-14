@@ -1,4 +1,4 @@
-part of exitlive.flutter_gitlab;
+part of flutter_gitlab;
 
 class ProjectsApi {
   ProjectsApi(this._gitLab);

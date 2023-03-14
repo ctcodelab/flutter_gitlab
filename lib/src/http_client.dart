@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:gitlab/gitlab.dart';
+import 'package:flutter_gitlab/flutter_gitlab.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 /// An abstraction for `http` that allows us to mock it.

@@ -14,12 +14,12 @@
 ///
 /// For more information, please refer to the
 /// [official GitLab API documentation at gitlab.com](https://docs.gitlab.com/ee/api/README.html).
-library exitlive.flutter_gitlab;
+library flutter_gitlab;
 
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:gitlab/src/http_client.dart';
+import 'package:flutter_gitlab/src/http_client.dart';
 import 'package:meta/meta.dart';
 
 part 'src/merge_requests.dart';

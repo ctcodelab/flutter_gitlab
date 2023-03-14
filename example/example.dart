@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:gitlab/gitlab.dart';
+import 'package:flutter_gitlab/flutter_gitlab.dart';
 
 const gitLabToken = 'glpat-KUsnhRnQJELNpUdzXiM5';
 const projectId = 4174;
