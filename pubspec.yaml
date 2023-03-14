@@ -1,4 +1,4 @@
-name: gitlab
+name: flutter_gitlab
 # Increasing this version number *automatically* publishes this package
 # when merged into master.
 version: 0.7.0

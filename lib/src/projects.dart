@@ -1,4 +1,4 @@
-part of exitlive.gitlab;
+part of exitlive.flutter_gitlab;
 
 class ProjectsApi {
   ProjectsApi(this._gitLab);
@@ -7,8 +7,7 @@ class ProjectsApi {
 
   MergeRequestsApi? _mergeRequestsApi;
 
-  MergeRequestsApi get mergeRequests =>
-      _mergeRequestsApi ??= MergeRequestsApi(_gitLab, this);
+  MergeRequestsApi get mergeRequests => _mergeRequestsApi ??= MergeRequestsApi(_gitLab, this);
 
   static const endpoint = '/projects';
 

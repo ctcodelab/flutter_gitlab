@@ -14,7 +14,7 @@
 ///
 /// For more information, please refer to the
 /// [official GitLab API documentation at gitlab.com](https://docs.gitlab.com/ee/api/README.html).
-library exitlive.gitlab;
+library exitlive.flutter_gitlab;
 
 import 'dart:async';
 
